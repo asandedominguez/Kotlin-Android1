@@ -15,6 +15,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
+    var tiempoInicio =
+        0L
+    private companion object {
+        private const val TAG =
+            "Estado"
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,43 +30,94 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Adrián",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
         }
-        Log.d("Estado", "OnCreate()")
+
+        Log.d(TAG, "onCreate()")
     }
-
-
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
-        Log.d("Estado", "OnStart")
+
+
+
+
+        tiempoInicio = System.currentTimeMillis()
+
+
+
+
+        Log.d("Estado", "onStart")
     }
 
 
-    override fun onResume(){
+
+
+    override fun onResume() {
         super.onResume()
-        Log.d("Estado", "OnResume()")
+
+
+
+
+        tiempoInicio = System.currentTimeMillis()
+
+
+
+
+        Log.d("Estado", "onResume")
     }
 
 
-    override fun onPause(){
+
+
+    override fun onPause() {
         super.onPause()
-        Log.d("Estado", "OnPause()")
+
+
+
+
+        val tiempoFinal = System.currentTimeMillis()
+        val duracion = (tiempoFinal - tiempoInicio) /
+
+                1000.0
+        Log.d("Estado", "onPause: $duracion segundos en ejecucion")
     }
-    override fun onDestroy(){
-        super.onDestroy()
-        Log.d("Estado", "OnDestroy()")
-    }
-    override fun onStop(){
+
+
+
+
+    override fun onStop() {
         super.onStop()
-        Log.d("Estado", "OnStop()")
+
+
+
+
+        val tiempoFinal = System.currentTimeMillis()
+        val duracion = (tiempoFinal - tiempoInicio) /
+
+                1000.0
+        Log.d("Estado", "onStop: $duracion segundos")
+    }
+
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+
+
+
+        val tiempoFinal = System.currentTimeMillis()
+        val duracion = (tiempoFinal - tiempoInicio) /
+
+                1000.0
+        Log.d("Estado", "onDestroy: $duracion segundos")
     }
 }
-
-
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
@@ -72,6 +131,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     MyApplicationTheme {
-        Greeting("Android")
+        Greeting(name = "Android")
     }
 }
