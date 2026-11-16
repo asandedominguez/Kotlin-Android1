@@ -1,24 +1,26 @@
-package com.example.myapplication
+/**
+ * Ejemplo de funciones en Kotlin
+ * Utilizamos valores por defecto
+ */
 
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
+fun main() {
+    // llamada a una funcion tradicional
+    suma(2,3)
 
-import org.junit.Test
-import org.junit.runner.RunWith
-
-import org.junit.Assert.*
+    // llamada nombrando los parametros
+    // el valor de 'a' será el por defecto
+    suma(b=12)
+}
 
 /**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Declaración de función en Kotlin
+ * fun: palabra reservada para designar las funciones
+ * Unit: es lo equivalente a void
+ * @param a un sumando, valor por defecto 0
+ * @param b otro sumando
  */
-@RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.myapplication", appContext.packageName)
-    }
+fun suma (a: Int=0, b: Int): Unit {
+    // suma los dos parámetros
+    val resultado = a+b
+    println("El resultado es: $resultado")
 }
